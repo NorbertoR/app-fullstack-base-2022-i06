@@ -37,6 +37,25 @@ app.get('/devices/', function(req, res, next) {
     
 });
 
+app.get('/metodoGET/', function(req, res, next) {
+    let devicesfull = require('./datos.json');
+    console.log("Alguien pidio get desde el archivo json!");
+    setTimeout(function(){
+        res.send(JSON.stringify(devicesfull)).status(200);
+    }, 2000);
+    
+});
+
+app.get('/metodoGET/:id', function(req, res) {
+    let devicesfull = require('./datos.json');
+    console.log("Alguien pidio un get desde el archivo json!: " + req.params.id);
+    res.send(JSON.stringify(devicesfull.find(devicesfull => devicesfull.id == req.params.id))).status(200);
+    //setTimeout(function(){
+    //    res.send(JSON.stringify(devicesfull)).status(200);
+    //}, 2000);
+    
+});
+
 app.listen(PORT, function(req, res) {
     console.log("NodeJS API running correctly");
 });
