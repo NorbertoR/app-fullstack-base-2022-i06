@@ -23,31 +23,32 @@ class Main implements EventListenerObject, ResponseLister {
             let resputa: Array<Device> = JSON.parse(resputaString);
             let cajaDiv = document.getElementById("caja");
 
-
             let datosVisuale:string = `<ul class="collection">`
             for (let disp of resputa) {
-                datosVisuale += ` <li class="collection-item avatar">`;
-                if (disp.type == 1) {
-                    datosVisuale += `<img src="../static/images/lightbulb.png" alt="" class="circle">`;
-                } else if (disp.type == 2) {
-                    datosVisuale += `<img src="../static/images/window.png" alt="" class="circle">`;
-                }
-                
-                datosVisuale += `<span class="title nombreDisp">${disp.name}</span><p>${disp.description} </p>
-                
-                <a href="#!" class="secondary-content">
-                <div class="switch">
-                <label>
-                  Off
-                  <input type="checkbox" id="cb_${disp.id}">
-                  <span class="lever"></span>
-                  On
-                </label>
-                </div>
-                </a>
+                datosVisuale += ` <li class="collection-item">`;
+                datosVisuale+= '<i class="material-icons">memory</i>';
+                datosVisuale += `<span class="title nombreDisp">${disp.name}</span> - ${disp.description}
                 <div class="secondary-content">
                         <a href="#!"><i class="material-icons" id="del_${disp.id}">delete</i> </a>
                 </div>
+
+                <div class="secondary-content">
+                        <a href="#!"><i class="material-icons" id="edi_${disp.id}">edit</i> </a>
+                </div>
+                <a href="#!" class="secondary-content">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" id="cb_${disp.id}">
+                            <span class="lever"></span>
+                            On
+                        </label>
+                     </div>
+                </a>
+    
+    
+
+
                 </li>`
                 
             }
