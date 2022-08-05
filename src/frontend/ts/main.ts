@@ -52,6 +52,36 @@ class Main implements EventListenerObject, ResponseLister {
                 
             }
             datosVisuale += `</ul>`
+
+            // let datosVisuale:string = `<ul class="collection">`
+            // for (let disp of resputa) {
+            //     datosVisuale += ` <li class="collection-item avatar">`;
+            //     if (disp.type == 1) {
+            //         datosVisuale += `<img src="../static/images/lightbulb.png" alt="" class="circle">`;
+            //     } else if (disp.type == 2) {
+            //         datosVisuale += `<img src="../static/images/window.png" alt="" class="circle">`;
+            //     }
+                
+            //     datosVisuale += `<span class="title nombreDisp">${disp.name}</span><p>${disp.description} </p>
+                
+            //     <a href="#!" class="secondary-content">
+            //     <div class="switch">
+            //     <label>
+            //       Off
+            //       <input type="checkbox" id="cb_${disp.id}">
+            //       <span class="lever"></span>
+            //       On
+            //     </label>
+            //     </div>
+            //     </a>
+            //     <div class="secondary-content">
+            //             <a href="#!"><i class="material-icons" id="del_${disp.id}">delete</i> </a>
+            //     </div>
+            //     </li>`
+                
+            // }
+            // datosVisuale += `</ul>`
+
             cajaDiv.innerHTML = datosVisuale;
 
             for (let disp of resputa) {
