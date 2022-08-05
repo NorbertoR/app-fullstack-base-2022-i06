@@ -10,7 +10,7 @@
       <script type="text/javascript" src="js/user.js"></script>
       <script type="text/javascript" src="js/device.js"></script>
       <script type="text/javascript" src="js/framework.js"></script>
-      <script type="text/javascript" src="js/main.js"></script>
+      <script type="text/javascript" src="js/main2.js"></script>
 
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
@@ -19,47 +19,62 @@
             <!-- Navigation bar -->
             <nav style="background-color:#124580">
                 <div class="nav-wrapper">
-                    <a href="#!" class="brand-logo left" style="margin-left: 15px;">Smart Home</a>
+                    <a href="http://localhost:8000/" class="brand-logo left" style="margin-left: 15px;">Smart Home</a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="#!"><i class="material-icons">search</i></a></li>
-                        <li><a href="dispositivonew.html"><i class="material-icons">developer_board</i></a></li>
+                        <li><a href="formularioalta.html"><i class="material-icons">developer_board</i></a></li>
                         <li><a href="#!"><i class="material-icons">menu</i></a></li>
                         <li><a href="#!"><i class="material-icons">refresh</i></a></li>
                         <li><a href="#!"><i class="material-icons">dashboard</i></a></li>
                         <li><a href="#!"><i class="material-icons">more_vert</i></a></li>
                     </ul>                
                 </div>
-            </nav>	
+            </nav>
             <!-- Page Body -->
             <div class="container">
                 <br/>
-                <h3 id="btnDoble">Smart Home Web Client!</h3>
+                <h4> Agregar un dispositivo</h4>
                 <br/>
-                <div id="caja" style="background-color: red;"> 
-             
-                </div>
                 <div class="row">
-                    <!--<div class="input-field col s12 m12 l12 xl12">
-                        <textarea id="textarea_1" class="materialize-textarea" style="height: 150px;" readonly></textarea>
-                    </div>-->
-                    <!--<div class="col s4 m4 l2 xl2">-->
-                        <!--<div class="input-field col s12">
-                            <select multiple>
-                              <option value="" disabled selected>Choose your option</option>
-                              <option value="1">Option 1</option>
-                              <option value="2">Option 2</option>
-                              <option value="3">Option 3</option>
-                            </select>
-                            <label>Materialize Multiple Select</label>
-                          </div>-->
-                        <button id="btnSaludar" class="btn waves-effect waves-light button-view"><i class="material-icons left">directions_run</i>Saludar</button>
-                        <button id="btnDoble2" class="btn waves-effect waves-light button-view"><i class="material-icons left">cloud</i>Doble</button>
-                        <button id="btnNewDevice" class="btn waves-effect waves-light button-view"><i class="material-icons left">developer_board</i>New</button>
-                        <a href="dispositivonew.html" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></a>
-                        <!--<a href="dispositivonew.html"><i class="material-icons">developer_board</i></a>-->
-                    <!--</div>-->
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="id_device" type="text" class="validate">
+                                    <label for="id_device">id</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="name_device" type="text" class="validate">
+                                    <label for="name_device">Name</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="description_device" type="text" class="validate">
+                                    <label for="descrption_device">Description</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="state_device" type="text" class="validate">
+                                    <label for="state_device">State</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="type_device" type="text" class="validate">
+                                    <label for="type_device">type</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s4"></div>
+                                <div class="input-field col s4">
+                                    <button id="btnAddDevice" class="btn waves-effect waves-light button-view"><i class="material-icons left">add</i>Agregar</button>
+                                </div>
+                                <div class="input-field col s4"></div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>	
+            </div>
         </main>
 		<!-- Page Footer -->
         <footer class="page-footer" style="background-color:#124580">

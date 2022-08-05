@@ -33,10 +33,8 @@ class Main implements EventListenerObject, ResponseLister {
                     datosVisuale += `<img src="../static/images/window.png" alt="" class="circle">`;
                 }
                 
-                datosVisuale += `<span class="title nombreDisp">${disp.name}</span>
-                <p>${disp.description}
-                </p>
-
+                datosVisuale += `<span class="title nombreDisp">${disp.name}</span><p>${disp.description} </p>
+                
                 <a href="#!" class="secondary-content">
                 <div class="switch">
                 <label>
@@ -45,9 +43,13 @@ class Main implements EventListenerObject, ResponseLister {
                   <span class="lever"></span>
                   On
                 </label>
-              </div>
+                </div>
                 </a>
-              </li>`
+                <div class="secondary-content">
+                        <a href="#!"><i class="material-icons" id="del_${disp.id}">delete</i> </a>
+                </div>
+                </li>`
+                
             }
             datosVisuale += `</ul>`
             cajaDiv.innerHTML = datosVisuale;
@@ -55,6 +57,8 @@ class Main implements EventListenerObject, ResponseLister {
             for (let disp of resputa) {
                 let checkbox = document.getElementById("cb_" + disp.id);
                 checkbox.addEventListener("click",this)
+                let botonBorrar = document.getElementById("del_" + disp.id);
+                botonBorrar.addEventListener("click",this)
             }
         
           } else {
@@ -63,11 +67,25 @@ class Main implements EventListenerObject, ResponseLister {
     }
     handlerResponseActualizar(status: number, response: string) {
         if (status == 200) {
-            alert("Se acutlizo correctamente")    
+            alert("Se actualizo el handle correctamente")    
         } else {
             alert("Error")    
         }
         
+    }
+    handlerResponseEliminar(status: number, response: string) {
+        if (status == 200) {
+            alert("Se eliminó un dispositivo")    
+        } else {
+            alert("Error")    
+        }
+    }
+    handlerResponseAgregar(status: number, response: string) {
+        if (status == 200) {
+            alert("Se agregó un nuevo dispositivo")    
+        } else {
+            alert("Error")    
+        }
     }
     public handleEvent(e:Event): void {
         let objetoEvento = <HTMLInputElement>e.target;
@@ -79,10 +97,23 @@ class Main implements EventListenerObject, ResponseLister {
             let datos = { "id": objetoEvento.id.substring(3), "state": objetoEvento.checked };
             this.framework.ejecutarRequest("POST","http://localhost:8000/actualizar", this,datos)
             
-        }else if (e.type == "click") {
-      
-            
-            alert("Hola " +  this.listaPersonas[0].nombre +" ");    
+        }else if (e.type == "click" && objetoEvento.id =="btnSaludar") {
+            alert("Hola " +  this.listaPersonas[0].nombre +".");    
+
+        }else if (e.type == "click" && objetoEvento.id =="btnNewDevice") {
+            alert("Se va agregar un device nuevo.");    
+        
+        }
+        else if (e.type == "click" && objetoEvento.id =="btnAddDevice") {
+            console.log("Se hizo click para agregar un dispositivo")
+            alert("Va...");    
+        
+        }else if (e.type == "click" && objetoEvento.id.startsWith("del_")) {
+          //  console.log(objetoEvento.id,)
+          console.log("Se hizo click para borrar")
+          let datos = { "id": objetoEvento.id.substring(4) };
+          this.framework.ejecutarRequest("DELETE","http://localhost:8000/eliminar", this,datos)
+          
         } else {
             alert("se hizo doble click en el titulo")
         }
@@ -94,12 +125,17 @@ window.addEventListener("load", () => {
     var instances = M.FormSelect.init(elems,"");
 
     let btn = document.getElementById("btnSaludar");
-    let btn2 = document.getElementById("btnDoble");
+    //let btn2 = document.getElementById("btnDoble");
+    let btnNew = document.getElementById("btnNewDevice");
+    //let btnAddDev = document.getElementById("btnAddDevice");
+
     let main: Main = new Main();
     main.nombre = "Matias"
 
-    btn2.addEventListener("dblclick", main);
+    btnNew.addEventListener("click", main);
+    //btn2.addEventListener("dblclick", main);
     btn.addEventListener("click", main);
+    //btnAddDev.addEventListener("click", main);
 
 });
 

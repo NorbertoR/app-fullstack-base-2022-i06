@@ -6,7 +6,9 @@ class FrameWork{
           if (xmlHttp.readyState == 4) {
             if (metodo == "GET") {
               lister.handlerResponse(xmlHttp.status,xmlHttp.responseText)
-            } else {
+            } else if (metodo == "DELETE") {
+              lister.handlerResponseEliminar(xmlHttp.status,xmlHttp.responseText)
+            }else {
               lister.handlerResponseActualizar(xmlHttp.status,xmlHttp.responseText)
             }
             }
@@ -19,10 +21,15 @@ class FrameWork{
         if (metodo == "POST") {
           xmlHttp.setRequestHeader("Content-Type", "application/json")
           xmlHttp.send(JSON.stringify(data))
-        } else {
+        } else if (metodo == "DELETE") {
+          xmlHttp.setRequestHeader("Content-Type", "application/json")
+          xmlHttp.send(JSON.stringify(data))
+        }
+        else {
           xmlHttp.send();  
         }
     
+
         
      
   }
