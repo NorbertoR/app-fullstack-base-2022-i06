@@ -23,8 +23,11 @@ class Main implements EventListenerObject, ResponseLister {
             let resputa: Array<Device> = JSON.parse(resputaString);
             let cajaDiv = document.getElementById("caja");
 
+
             let datosVisuale:string = `<ul class="collection">`
             for (let disp of resputa) {
+                let estado=disp.state?"checked":"";
+                
                 datosVisuale += ` <li class="collection-item">`;
                 datosVisuale+= '<i class="material-icons">memory</i>';
                 datosVisuale += `<span class="title nombreDisp">${disp.name}</span> - ${disp.description}
@@ -39,7 +42,7 @@ class Main implements EventListenerObject, ResponseLister {
                     <div class="switch">
                         <label>
                             Off
-                            <input type="checkbox" id="cb_${disp.id}">
+                            <input type="checkbox" id="cb_${disp.id}" ${estado} >
                             <span class="lever"></span>
                             On
                         </label>
