@@ -4,4 +4,5 @@ interface ResponseLister{
     handlerResponseActualizar(status:number,response:string);
     handlerResponseEliminar(status:number,response:string);
     handlerResponseAgregar(status:number,response:string);
+
 }

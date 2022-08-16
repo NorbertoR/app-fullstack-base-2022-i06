@@ -35,6 +35,28 @@ class Main implements EventListenerObject, ResponseLister {
                         <a href="#!"><i class="material-icons" id="del_${disp.id}">delete</i> </a>
                 </div>
 
+                <a href="#!" class="secondary-content">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" id="cb_${disp.id}" ${estado} >
+                            <span class="lever"></span>
+                            On
+                        </label>
+                     </div>
+                </a>
+                </li>`
+
+            }
+            datosVisuale += `</ul>`
+
+/*
+                datosVisuale += ` <li class="collection-item">`;
+                datosVisuale+= '<i class="material-icons">memory</i>';
+                datosVisuale += `<span class="title nombreDisp">${disp.name}</span> - ${disp.description}
+                <div class="secondary-content">
+                        <a href="#!"><i class="material-icons" id="del_${disp.id}">delete</i> </a>
+                </div>
                 <div class="secondary-content">
                         <a href="#!"><i class="material-icons" id="edi_${disp.id}">edit</i> </a>
                 </div>
@@ -48,43 +70,12 @@ class Main implements EventListenerObject, ResponseLister {
                         </label>
                      </div>
                 </a>
-    
-    
-
-
                 </li>`
-                
+
             }
             datosVisuale += `</ul>`
 
-            // let datosVisuale:string = `<ul class="collection">`
-            // for (let disp of resputa) {
-            //     datosVisuale += ` <li class="collection-item avatar">`;
-            //     if (disp.type == 1) {
-            //         datosVisuale += `<img src="../static/images/lightbulb.png" alt="" class="circle">`;
-            //     } else if (disp.type == 2) {
-            //         datosVisuale += `<img src="../static/images/window.png" alt="" class="circle">`;
-            //     }
-                
-            //     datosVisuale += `<span class="title nombreDisp">${disp.name}</span><p>${disp.description} </p>
-                
-            //     <a href="#!" class="secondary-content">
-            //     <div class="switch">
-            //     <label>
-            //       Off
-            //       <input type="checkbox" id="cb_${disp.id}">
-            //       <span class="lever"></span>
-            //       On
-            //     </label>
-            //     </div>
-            //     </a>
-            //     <div class="secondary-content">
-            //             <a href="#!"><i class="material-icons" id="del_${disp.id}">delete</i> </a>
-            //     </div>
-            //     </li>`
-                
-            // }
-            // datosVisuale += `</ul>`
+*/
 
             cajaDiv.innerHTML = datosVisuale;
 
@@ -121,6 +112,7 @@ class Main implements EventListenerObject, ResponseLister {
             alert("Error")    
         }
     }
+
     public handleEvent(e:Event): void {
         let objetoEvento = <HTMLInputElement>e.target;
       
@@ -143,12 +135,11 @@ class Main implements EventListenerObject, ResponseLister {
             alert("Va...");    
         
         }else if (e.type == "click" && objetoEvento.id.startsWith("del_")) {
-          //  console.log(objetoEvento.id,)
           console.log("Se hizo click para borrar")
           let datos = { "id": objetoEvento.id.substring(4) };
           this.framework.ejecutarRequest("DELETE","http://localhost:8000/eliminar", this,datos)
-          
-        } else {
+
+        }else {
             alert("se hizo doble click en el titulo")
         }
     }
@@ -159,17 +150,13 @@ window.addEventListener("load", () => {
     var instances = M.FormSelect.init(elems,"");
 
     let btn = document.getElementById("btnSaludar");
-    //let btn2 = document.getElementById("btnDoble");
     let btnNew = document.getElementById("btnNewDevice");
-    //let btnAddDev = document.getElementById("btnAddDevice");
 
     let main: Main = new Main();
     main.nombre = "Matias"
 
     btnNew.addEventListener("click", main);
-    //btn2.addEventListener("dblclick", main);
     btn.addEventListener("click", main);
-    //btnAddDev.addEventListener("click", main);
 
 });
 
