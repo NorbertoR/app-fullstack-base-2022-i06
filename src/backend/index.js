@@ -16,7 +16,7 @@ var  devices = [
         'id': 1, 
         'name': 'Lampara 1', 
         'description': 'Luz living', 
-        'state': 1, 
+        'state': 0, 
         'type': 1, 
     },
     { 
@@ -96,10 +96,19 @@ con.connect(function(err) {
 app.get('/devices/', function(req, res) {
    
     console.log("Alguien pidio divices!");
-    setTimeout(function(){
-        res.send(JSON.stringify(devices)).status(200);
-    }, 2000);
-    
+//    setTimeout(function(){
+//        res.send(JSON.stringify(devices)).status(200);
+//    }, 2000);
+
+    let sql= "SELECT id, name, description, state, type FROM Devices";
+    utils.query(sql,function(err,respuesta){
+        if(err){
+            res.send(err).status(400);
+            return;
+        }
+        res.send(respuesta)
+    });    
+   
 });
 
 app.listen(PORT, function(req, res) {
