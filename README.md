@@ -11,6 +11,8 @@ Este proyecto es una aplicación web fullstack que se ejecuta sobre el ecosistem
 
 La aplicación IoT de base que viene con este proyecto se encarga de crear una tabla llamada `Devices` en la base de datos, y la idea es que vos puedas desarrollar el código de backend y frontend que te permita controlar desde el navegador el estado de los devices de un hogar inteligente - *como pueden ser luces, TVs, ventiladores, persianas, enchufes y otros* - y almacenar los estados de cada uno en la base de datos. 
 
+En la aplicación se puede ver los dispositivos que están en la base de datos mysql. Permite cambiar el estado de los dispositivos y ver el estado de los mismos, eliminar  y agregar dispositivos a la base de datos.
+
 Realizando estas tareas vas a a tener una aplicación fullstack IoT del mundo real que utiliza tecnologías actuales en la que un backend es capaz de interactuar con una DB para cumplir con las peticiones de control que se le mandan desde el cliente web.
 
 En esta imagen podés ver una posible implementación del cliente web que controla los artefactos del hogar.
